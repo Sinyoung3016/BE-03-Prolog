@@ -1,4 +1,4 @@
-name: Docker Build and Push & Run AWS
+name: test4-gradle+docker cache
 
 on:
   push:
