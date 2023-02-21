@@ -22,6 +22,14 @@ jobs:
       - name: Create db config file
         run: echo "${{ secrets.ENV_PROPERTIES }}" > ./.env
 
+      - name: Cache Gradle packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle', '**/gradle-wrapper.properties') }}
+          restore-keys: ${{ runner.os }}-gradle
+          cache-read-only: ${{ github.ref != 'refs/heads/gradle-cache' && github.ref != 'refs/heads/develop' }}
+
       - name: Build with Gradle
         uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
         with:
