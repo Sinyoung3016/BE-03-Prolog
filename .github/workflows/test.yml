@@ -1,9 +1,9 @@
-name: test
+name: test1-gradle+docker cache
 
 on:
   push:
     branches:
-      - "**"
+      - "docker-cache"
 
 permissions:
   contents: read
